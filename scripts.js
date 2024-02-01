@@ -5,13 +5,28 @@ function addToPage(string){
 
 // let's write a function that accepts two arguments then adds them together. If the arguments aren't both numbers, concatenate that with the other argument and a space between the args, otherwise perform addition
 // TO DO
-
+function addOrConcatenate(arg1, arg2) {
+    if (typeof arg1 === 'number' && typeof arg2 === 'number') {
+        return arg1 + arg2;
+    } else {
+        return `${arg1} ${arg2}`;
+    }
+}
 // call the function a few times with different parameters
 // TO DO
+addToPage(addOrConcatenate(2, 3)); // Should display 5
+addToPage(addOrConcatenate('Hello', 'World')); // Should display 'Hello World'
+addToPage(addOrConcatenate(5, 'Test')); // Should display '5 Test'
 
 // let's talk about scope and see it in action
 // function with a local variable to display to the screen
 // TO DO
+function scopeExample() {
+    let localVariable = 'I am local';
+    addToPage(localVariable); // This will work and display 'I am local'
+}
+
+scopeExample();
 
 // do functions execute when you don't call them?
 // TO DO
@@ -23,44 +38,73 @@ function addToPage(string){
 
 // let's create a global score variable
 // TO DO
+let score = 0;
 
 // now let's write a function that will add two to the current score each time it's called
 // TO DO
+function addTwo() {
+    score += 2;
+}
 
 // we could also have a function for a three-pointer
 // TO DO
+function addThree() {
+    score += 3;
+}
 
 // now let's call that a couple of times, then write the current score to the page
 // TO DO
+addTwo();
+addThree();
+addToPage(`Score: ${score}`);
 
 // don't forget, you can call a function that returns a value and assign that returned value to a variable
 // this function will double the parameter's value and return it
 // TO DO
+function doubleNumber(num) {
+    return num * 2;
+}
 
 // let's create a number variable and initialize it to a value of 5
 // TO DO
+let number = 5;
 
 // now let's call doubleMyNumber and pass in number as the parameter, then assign the returned value back to number
 // TO DO
+number = doubleNumber(number);
 
 // and let's write that value to the page
 // TO DO
+addToPage(`Doubled Number: ${number}`);
 
 // let's re-write that last function as an arrow function and use it to double the number variable again
 // TO DO
+const double = num => num * 2;
 
 // now call that function again
 // TO DO
+number = double(number);
 
 // and write the value to the page again
 // TO DO
+addToPage(`Doubled Again: ${number}`);
 
 // write a function to convert an amount of change under one dollar 
 // to the number and type of coins needed to make that change
 // we will return the number of each type of coin in order using an array like this:
 // [quarters, dimes, nickels, pennies]
 // TO DO
+function convertChange(amount) {
+    const quarters = Math.floor(amount / 25);
+    amount %= 25;
+    const dimes = Math.floor(amount / 10);
+    amount %= 10;
+    const nickels = Math.floor(amount / 5);
+    amount %= 5;
+    const pennies = amount;
 
+    return [quarters, dimes, nickels, pennies];
+}
 
 // practice from one of the zyBooks activities
 // The code below produces a 5 x 10 box of question marks. Convert the code into a function called drawBox() that has three parameters:
@@ -93,7 +137,9 @@ for (let r = 0; r < numRows; r++) {
 
 // call our new function with different arguments
 // TO DO
-
+drawBox(5, 4, "!"); // This will draw a 5x4 box using "!" as the character
+console.log(''); // Adds an empty line for separation in the console
+drawBox(2, 6);  // default X in 2*6 box
 
 // ------------------------------------
 // CODE BELOW IS COMPLETE - DO NOT EDIT
