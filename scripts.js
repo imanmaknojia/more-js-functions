@@ -105,7 +105,8 @@ function convertChange(amount) {
 
     return [quarters, dimes, nickels, pennies];
 }
-
+const change = convertChange(99);
+addToPage(`Change for 99 cents: Quarters: ${change[0]}, Dimes: ${change[1]}, Nickels: ${change[2]}, Pennies: ${change[3]}`);
 // practice from one of the zyBooks activities
 // The code below produces a 5 x 10 box of question marks. Convert the code into a function called drawBox() that has three parameters:
 // numRows - The number of rows for the box.
