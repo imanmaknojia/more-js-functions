@@ -94,19 +94,22 @@ addToPage(`Doubled Again: ${number}`);
 // we will return the number of each type of coin in order using an array like this:
 // [quarters, dimes, nickels, pennies]
 // TO DO
-function convertChange(amount) {
-    const quarters = Math.floor(amount / 25);
-    amount %= 25;
-    const dimes = Math.floor(amount / 10);
-    amount %= 10;
-    const nickels = Math.floor(amount / 5);
-    amount %= 5;
-    const pennies = amount;
+function convertToCoins(amount) {
+    const coinValues = [25, 10, 5, 1]; // Coin values in cents: quarters, dimes, nickels, pennies
+    let remaining = amount;
+    let result = coinValues.map(value => {
+        let coins = Math.floor(remaining / value); // Determine the number of coins of this type
+        remaining -= coins * value; // Subtract the value of these coins from the remaining amount
+        return coins;
+    });
 
-    return [quarters, dimes, nickels, pennies];
+    return result; // Returns an array: [quarters, dimes, nickels, pennies]
 }
-const change = convertChange(99);
-addToPage(`Change for 99 cents: Quarters: ${change[0]}, Dimes: ${change[1]}, Nickels: ${change[2]}, Pennies: ${change[3]}`);
+
+// Example:
+let change = convertToCoins(99); // Converts 99 cents
+console.log(`Quarters: ${change[0]}, Dimes: ${change[1]}, Nickels: ${change[2]}, Pennies: ${change[3]}`);
+
 // practice from one of the zyBooks activities
 // The code below produces a 5 x 10 box of question marks. Convert the code into a function called drawBox() that has three parameters:
 // numRows - The number of rows for the box.
